@@ -162,7 +162,7 @@ WATSONX_APIKEY=oj5BW-...... [insert your API key here]
 WATSONX_SPACE_ID=186ac9b7-35ec....... [insert your space ID here]
 ```
 You call the tool from the command line like this (make sure you are in the root folder of the content repo):
-`python usecases/retail/src/tools/generate_description_from_image.py --url https://i.imgur.com/qfiugNJ.jpeg`
+`python src/tools/generate_description_from_image.py --url https://i.imgur.com/qfiugNJ.jpeg`
 
 #### Importing the tool
 The easiest way to import the tool into your ADK instance is to use the CLI. Remember that we are using the concept of a `Connection` to insert the right values for API key etc? Before we can import the tool, we need to create the Connection instance (the import will fail otherwise).
@@ -183,7 +183,7 @@ Note that the YAML defines two `environments`, namely `draft` and `live`. This a
 
 Create the Connection instance with the CLI like this:
 ```
-orchestrate connections import -f ./usecases/retail/src/connections/watsonxai.yaml
+orchestrate connections import -f ./src/connections/watsonxai.yaml
 ```
 
 Next, we need to set the actual values for model ID, API key and project ID. Note that these values need to be added in one call, in other words, whenever you call the `set-credentials` subcommand, it will overwrite what had been defined before.
@@ -206,7 +206,7 @@ orchestrate connections set-credentials -a watsonxai --env "${TARGET_ENV}" -e "m
 
 After this, you are finally ready to import the tool. On the command line, enter the following command to do so (make sure you are in the right folder when calling it):
 ```
-orchestrate tools import -k python -f ./usecases/retail/src/tools/generate_description_from_image.py -r ./usecases/retail/src/tools/requirements.txt -a watsonxai
+orchestrate tools import -k python -f ./src/tools/generate_description_from_image.py -r ./src/tools/requirements.txt -a watsonxai
 ```
 You can make sure that the tool was successfully imported by running the following command on the command line:
 ```
@@ -246,7 +246,7 @@ environments:
 
 Create the new object by entering the following on the command line:
 ```
-orchestrate connections import -f ./usecases/retail/src/connections/tavily.yaml
+orchestrate connections import -f ./src/connections/tavily.yaml
 ```
 > You will see a warning about the configuration for the `live` environment, you can safely ignore that warning here, we will use the `live` environment only when connected to a remote SaaS instance.
 
@@ -269,7 +269,7 @@ orchestrate connections set-credentials -a tavily --env "${TARGET_ENV}" -e "apik
 
 The final step is to import the tool:
 ```
-orchestrate tools import -k python -f ./usecases/retail/src/tools/web_search.py -r ./usecases/retail/src/tools/requirements.txt -a tavily
+orchestrate tools import -k python -f ./src/tools/web_search.py -r ./src/tools/requirements.txt -a tavily
 ```
 
 Verify that the second tool was successfully imported by using the `orchestrate tools list` command.
@@ -290,12 +290,12 @@ Before we can start defining our first agent via the UI, we have to import at le
 
 The sample agent offers insight into IBM, and it uses a "knowledge base" consisting of a number of PDF files as its source. First, we need to import this new knowledge base. Enter the following on the command line:
 ```
-orchestrate knowledge-bases import -f ./usecases/retail/src/ibm_knowledge/knowledge_base/ibm_knowledge_base.yaml
+orchestrate knowledge-bases import -f ./src/ibm_knowledge/knowledge_base/ibm_knowledge_base.yaml
 ```
 
 After creating the knowledge base, we can import the actual agent:
 ```
-orchestrate agents import -f ./usecases/retail/src/ibm_knowledge/agents/ibm_agent.yaml
+orchestrate agents import -f ./src/ibm_knowledge/agents/ibm_agent.yaml
 ```
 
 You can try out this agent later, for now we will leave it alone and continue with our retail use case.
@@ -403,7 +403,7 @@ Note that the `instructions` section has a similar structure to the one in the i
 
 We can import the agent into our watsonx Orchestrate instance by entering the following command:
 ```
-orchestrate agents import -f ./usecases/retail/src/agents/market_analyst_agent.yaml
+orchestrate agents import -f ./src/agents/market_analyst_agent.yaml
 ```
 
 Once imported, we can see and test the agent in the UI. Go back to your browser and click on the `Manage agents` link.
@@ -444,7 +444,7 @@ Note how the 'Reasoning' section contains details about how to use other agents,
 
 We import this agent just like the previous one:
 ```
-orchestrate agents import -f ./usecases/retail/src/agents/retail_market_agent.yaml
+orchestrate agents import -f ./src/agents/retail_market_agent.yaml
 ```
 
 Back in the `Manage agents` view in the UI, you can reload the page and see the new agent listed next to the other ones.
@@ -582,7 +582,7 @@ for agent in internet_research_agent.yaml market_analyst_agent.yaml retail_marke
 done
 ```
 
-So go ahead and enter `./usecases/retail/src/import-all.sh` on the command line.
+So go ahead and enter `./src/import-all.sh` on the command line.
 
 ![alt text](images/image25.png)
 
@@ -611,8 +611,8 @@ Remember that the values for the credentials are retrieved from the .env file. T
 
 Enter the following on the command line.
 ```
-./usecases/retail/src/set-credentials.sh draft
-./usecases/retail/src/set-credentials.sh live
+./src/set-credentials.sh draft
+./src/set-credentials.sh live
 ```
 
 ![alt text](images/image30.png)
@@ -834,10 +834,10 @@ The returned message is embedded into a piece of text, and then saved into the o
 It's now time to run the application and test it! You have saved the three parameters it requires as environment variables above, so you can call it right away:
 
 ```
-python ./usecases/retail/src/app/image_listener.py --agent_id $AGENT_ID --target_folder $TARGET_FOLDER --token $BEARER_TOKEN
+python ./src/app/image_listener.py --agent_id $AGENT_ID --target_folder $TARGET_FOLDER --token $BEARER_TOKEN
 ```
 
-Now let's copy an image file into the target folder. You can use any of the files in the [./usecases/retail/src/app/images/](./src/app/images/) folder for this test. Copy an paste the file either using your File Explorer or run a `cp` command in a separate command terminal - either will do the trick.
+Now let's copy an image file into the target folder. You can use any of the files in the [./src/app/images/](./src/app/images/) folder for this test. Copy an paste the file either using your File Explorer or run a `cp` command in a separate command terminal - either will do the trick.
 
 ![alt text](images/image48.png)
 
