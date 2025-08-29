@@ -1,4 +1,6 @@
-# TechXchange Workshop 3394: Agentic Retail - Product shelf placement analysis
+# TechXchange Workshop 3394: Bootcamp for Experienced AI Developers: Build and Deploy AI Agents (BYOD)
+
+## Agentic Retail - Product shelf placement analysis
 
 ![](./images/d96343cd-808a-4f0e-971a-1e6bf9e58fb6.png)
 
@@ -25,7 +27,7 @@ Additionally, this solution can help retailers to better understand their custom
 ![Retail Architecture](./images/Retail%20Architecture.jpg)
 
 ## 📄 Setup Instructions
-You can find information about the requires setup for this lab in [this file](./setup.md). It takes you through the installation and configuration that is needed before you can start on the actual lab.
+You can find information about the requires setup for this lab in [this file](./step-by-step-instructions.md). It takes you through the installation and configuration that is needed before you can start on the actual lab.
 
 ## 📄 Step-by-step Hands-on Instructions
 You can find step-by-step instructions in [this document](./retail.md). It shows how you can implement the use case using watsonx.ai and watsonx Orchestrate.
