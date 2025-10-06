@@ -12,3 +12,4 @@ set +o allexport
 # set the credentials
 orchestrate connections set-credentials -a watsonxai --env "${TARGET_ENV}" -e "modelid=${WATSONX_MODEL_ID}" -e "spaceid=${WATSONX_SPACE_ID}" -e "apikey=${WATSONX_APIKEY}"
 orchestrate connections set-credentials -a tavily --env "${TARGET_ENV}" -e "apikey=${TAVILY_API_KEY}"
+orchestrate connections set-credentials -a serpapi --env "${TARGET_ENV}" -e "SERP_API_KEY=${SERP_API_KEY}"

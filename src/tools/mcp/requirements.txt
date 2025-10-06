@@ -1,0 +1,7 @@
+fastmcp
+google-search-results
+pydantic
+uv
+mcp[cli]
+ibm-watsonx-orchestrate
+serpapi
