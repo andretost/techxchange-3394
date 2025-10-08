@@ -62,7 +62,8 @@ source /home/techzone/wsl_wxoenv/bin/activate
 
 ## Lab materials
 
-The materials for this lab will be given to you by your instructor in the form of a zip file. You need to unzip this file into a folder on your machine. The file contains a set of markdown files that represent the instructions for various parts of the bootcamp (including this very file), as well as code samples that you are going to use. Where to unzip the file differs based on whether you are running this lab on your local machine or on a virtual machine provided to you.
+The materials for this lab will be provided to you by your instructor either as a github link or in the form of a zip file. If a zip file, you need to unzip this file into a folder on your machine. The file contains a set of markdown files that represent the instructions for various parts of the bootcamp (including this very file), as well as code samples that you are going to use. Where to unzip the file differs based on whether you are running this lab on your local machine or on a virtual machine provided to you.
+If you are using a github repo, feel free to clone it to your VM, and/or navigate through the instructions using your browser.
 
 ### Local machine
 
@@ -129,7 +130,9 @@ To run the lab end to end, you need a number of environments.
 
 For the lab, as well as for the install of the Developer's Edition of watsonx Orchestrate, you will need access to an IBM watsonx.ai Runtime instance, and specifically, a `deployment space ID` for that instance as well as an `API key` for the IBM Cloud account the instance is running in. 
 
-Your instructor should have given you access to the instances of watsonx Orchestrate and watsonx.ai that you will use throughout the bootcamp. To access them, you start out by logging into your IBM Cloud account at https://cloud.ibm.com. You can find the resources that you have access to in that account when going to the so-called "hamburger menu" on the top left of the page and clicking on `Resource list`.
+Your instructor should have given you access to the instances of watsonx Orchestrate and watsonx.ai that you will use throughout the bootcamp. This might be in form of a file named `.env`, which contains all the required keys. If so, you can skip the steps documented below.
+
+In other cases, you will have access to your own instance of watsonx.ai and watsonx Orchestrate. To access them, you start out by logging into your IBM Cloud account at https://cloud.ibm.com. You can find the resources that you have access to in that account when going to the so-called "hamburger menu" on the top left of the page and clicking on `Resource list`.
 
 ![alt text](images/setup-image1.png)
 
@@ -170,6 +173,8 @@ The last step here is that we need to capture the Space GUID. You can find the G
 ![alt text](images/setup-image10.png)
 
 #### The .env file
+
+> If you were given a ready-made `.env` file by your instructor, you can use it as is and do not have to make the changes described below.
 
 The Space GUID, as well as a number of other environment variables, goes into a file called `.env`. This file should exist in **the root folder** of where you extracted the content of this repo. You can use the .env.sample file as an example.
 
@@ -235,7 +240,7 @@ To run it on your own laptop, you need to install
 
 Once you have these prerequisites available, you can install the ADK by following the instructions at [the ADK install page](https://developer.watson-orchestrate.ibm.com/getting_started/installing).
 
-> **Note**: These instructions were created for a specific version of the ADK, namely version **1.8.0**. We recommend you specify that version when running the install: `pip install ibm-watsonx-orchestrate==1.8.0`.
+> **Note**: These instructions were created for a specific version of the ADK, namely version **1.8.0**. We recommend that you install the latest version of the ADK, in which case you enter: `pip install ibm-watsonx-orchestrate`. But if you prefer to use the version this material is based on, run: `pip install ibm-watsonx-orchestrate==1.8.0`.
 
 You also need to install the watsonx Orchestrate Developer Edition, which is part of the ADK, by following the related [install instructions](https://developer.watson-orchestrate.ibm.com/getting_started/wxOde_setup). However, **DO NOT** set up the .env file as described in the instructions! You already have the right values in your .env file if you followed the instructions above.
 
@@ -290,8 +295,6 @@ You can sign up with your Google ID, or Github ID, or your email address. Once y
 ![alt text](images/setup-image18.png)
 
 Click on the Plus sign as shown in the setup-image above. Name your key "default". After it has been created, you can copy its value to the clipboard by clicking on the copy icon next to your key:
-
-![alt text](images/image19.png)
 
 To complete the setup for this use case, we will add the Tavily API key to the .env file as before, with an editor of your choice. Add your key to the `TAVILY_API_KEY` variable.
 
